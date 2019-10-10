@@ -1,6 +1,6 @@
-use "https://docs.google.com/uc?id=1mIfqPkaYz2FJuFDw_5HjEglNE8UtbNuR&export=download", clear
+ use "https://docs.google.com/uc?id=1mIfqPkaYz2FJuFDw_5HjEglNE8UtbNuR&export=download", clear
 
-sort countryname
+ sort countryname
  
 append using "https://docs.google.com/uc?id=13KCmLDi7hMphxMO5yh3ciYvMKKACdWFW&export=download", keep(countrycode) force
 
@@ -12,7 +12,7 @@ merge 1:1 _n using "https://docs.google.com/uc?id=13KCmLDi7hMphxMO5yh3ciYvMKKACd
 
 sort countryname
 
-//After sorting by countryname, the shared variable, I renamed the variables I wanted to keep, then kept only those variables. This left me with 15 variables and 61 observations (not ideal)//
+//After sorting by countryname, the shared variable, I renamed the variables I wanted to keep, then kept only those variables, along with the _merge variable. This created 16 variables and 90,885 observations.//
 
 rename V10 happiness
 
@@ -34,9 +34,15 @@ rename V240 sex
 
 rename V242 age
 
-keep countryname happiness healthstate womenworkprob marital religimp democimp europunimp sex age DISBELIEF SCEPTICISM I_NATIONALISM AUTONOMY I_WOMJOB
+keep countryname happiness healthstate womenworkprob marital religimp democimp europunimp sex age DISBELIEF SCEPTICISM I_NATIONALISM AUTONOMY I_WOMJOB _merge
 
-collapse happiness healthstate womenworkprob marital religimp democimp europunimp sex age DISBELIEF SCEPTICISM I_NATIONALISM AUTONOMY I_WOMJOB, by(countryname)
+//I kept these variables to potentially examine the values of happiness, subjective health, the belief that women should not work, religion, and religious belief variables, as well as feelings of nationalism and belonging to the EU, and gender differences. This needs refining.//
+
+tab _merge
+
+tabulate happiness democimp, chi2
+
+collapse _merge happiness healthstate womenworkprob marital religimp democimp europunimp DISBELIEF SCEPTICISM I_NATIONALISM AUTONOMY I_WOMJOB, by(sex)
 
 reshape wide happiness, i(healthstate womenworkprob DISBELIEF SCEPTICISM) j(countryname)
 
@@ -44,6 +50,7 @@ reshape long
 
 sort countryname
 
-//Honesty: It looks as though I made the data useless, probably collapsing wasn't useful here as it created means from categorical variables. But for practice I did it anyway. I will clean up and use different manipulations relevant to the data in subsequent PSs.//
+//Honesty: It looks as though I made the data useless, probably collapsing wasn't useful here. But for practice I did it anyway. I will clean up and use different manipulations relevant to the data in subsequent PSs.//
+
 
 
