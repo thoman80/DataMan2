@@ -1,4 +1,8 @@
- use "https://docs.google.com/uc?id=1mIfqPkaYz2FJuFDw_5HjEglNE8UtbNuR&export=download", clear
+//need preamble
+
+//need broief description of your research like reseach question, hypotheses, model, variables
+
+use "https://docs.google.com/uc?id=1mIfqPkaYz2FJuFDw_5HjEglNE8UtbNuR&export=download", clear
 
  sort countryname
  
@@ -7,7 +11,7 @@ append using "https://docs.google.com/uc?id=13KCmLDi7hMphxMO5yh3ciYvMKKACdWFW&ex
 //I used append to convert both master and using files to long// 
 
 merge 1:1 _n using "https://docs.google.com/uc?id=13KCmLDi7hMphxMO5yh3ciYvMKKACdWFW&export=download", update force
-
+//no need to specify country id in the merge command--please have a careful look at merge command agaibn!
 //I merged the two datasets by countryname, which resulted in 1,320 merged observations and 511 variables total.//
 
 sort countryname
