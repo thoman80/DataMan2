@@ -1,16 +1,20 @@
 //Galadriel Thoman//
 //PS3 10/17/19//
-Stata Version 16
+Stata Version 16 //no! thats incorrect syntax to specify version!
 
 //I am doing a project on poverty in Botswana for another class, and I am interested in comparing the country to other countries in Africa statistically, as Botswana is known as the "African Exception" and considered an economic success. However, there are still several measures that is is lagging behind in. Using a combination of data from several global institutions, I want to examine if Botswana is statistically still improving and doing better than its neighbors, particulary at both the national level and at a community level (thorugh survey data).//
+//say a bit more ie what is hypothesis and model and specific variables
 
 //installed stata packages: povcalnet and prosperity//
-
+//ok, but can also install them from commandline! 
+ 
 use "https://docs.google.com/uc?id=170HGK-ylI7gE7unHS9myb0CWeeosKRkk&export=download", clear
 
 //Master dataset is Botswana. I am merging this with similar datasets for Zambia, Zimbabwe, Gabon, Mauritius, and Nigeria, on indicator name, country name, and years 1995-2014.//
-
+//need to clearly specify what each dataset is!! url and exact description!
 merge 1:1 indicatorname countryname yr1995 yr1996 yr1997 yr1998 yr1999 yr2000 yr2001 yr2002 yr2003 yr2004 yr2005 yr2006 yr2007 yr2008 yr2009 yr2010 yr2011 using "https://docs.google.com/uc?id=1Lsb0IuJlOOBE0Qtfph7LnRxrt75xLwSs&export=download"
+//you need to reread on merge! typically you'd merge just on country and year
+//again, as i saaid for others need to have datasets from multiple sources!
 
 merge 1:1 indicatorname countryname yr1995 yr1996 yr1997 yr1998 yr1999 yr2000 yr2001 yr2002 yr2003 yr2004 yr2005 yr2006 yr2007 yr2008 yr2009 yr2010 yr2011 using"https://docs.google.com/uc?id=19u7upZgsqCjY_oImJSwey0gDeTw-JyGk&export=download", generate(_merge2)
 
@@ -37,7 +41,7 @@ append using "https://docs.google.com/uc?id=1KX1j7VVDs4POqdQCamLpld6sQlZMRnyY&ex
 append using "https://docs.google.com/uc?id=1P0xHrLwZ9xMpZ6YTC-vpgbeHV_lgHMb3&export=download"
 
 //I could not for the life of me figure out how to make a m:1 or 1:m merge work. I continuously got errors like "variable "" does not uniquely identify observations in master data" and "variable '' not found" even when the variables existed in both datasets. I dropped duplicates, I searched with isid on everything that made sense, I sorted on different variables, I did everything I could think of and I couldn't make it happen. I had the same trouble with reshape. I don't know what I was doing wrong but by the time I realized it wasn't working I had an emergency and wasn't able to get help.//
-
+//well because for 1:m, need to have id uniquely identify in master and have multiples in using--again pls start early and ask questions!!!
 
 
 
