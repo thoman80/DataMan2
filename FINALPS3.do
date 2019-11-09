@@ -1,3 +1,5 @@
+//there are 4 merges, not 5, and some important mistakes; still, its a huge progress, good job, but try to make it even better
+
 //Galadriel Thoman//
 //PS3-REDO//
 //Stata Version 16//
@@ -6,6 +8,7 @@
 
 //The first dataset was imported through the Stata command, and each other source for the subsequent datasets are in the comments between the **  **.//
 
+//this dataset is empty! why we load empty data??? there should be no mistakes in the dofile
 use "https://docs.google.com/uc?id=1iftEgeiRwATNdqOtNqJWDoRHyg04bYyT&export=download", clear
 
 drop empty
@@ -42,7 +45,7 @@ rename pov550 povgap550
 
 keep countryname year popslums pov190 povgini pov320 povlinesgap rurpov urbpov povgap550 povgap190 povgap320
 
-mvencode *, mv(99999)
+mvencode *, mv(99999) //why would you do that? stata's code for missing is . !
 
 drop if year<1995
 drop if year>2015
@@ -56,6 +59,7 @@ tab countryname _merge
 //There were only 3700 matched observations because the main dataset (the wbopendata set) is missing countried that the dataset on disk includes.//
 
 //I am now merging a dataset with Income Per Capita (adjusted for PPP), found at **https://www.gapminder.org/data/documentation/gd001/ **. Like the population dataset, I edited the country names to country name abreviations so that they would match with the other datasets I planned to use, and kept only the years between 1995-2015.//
+//ok, good you explain what you did, but why not have code for that here? i hope you didnt use excel!
 
 merge 1:1 countryname year using "https://docs.google.com/uc?id=17HKL3exP9lFG7eZvlx5KW3goJyKR3xY2&export=download", generate(_merge2)
 
@@ -67,10 +71,12 @@ sort countryname year
 
 //I cleaned up the years, keeping only in the parameter of 1995-2015, and only 7 of the variables. Again, there is not a perfect match of countries, which led to a not perfect match.//
 
+//no, thats a mistake, should be 1:1
 merge 1:m countryname year using "https://docs.google.com/uc?id=1hod9Y7IZ6OUN6aQC8uATU5SaiJNhfp_x&export=download", generate(_merge3)
 
 //To clean up the data and help it match the final merge dataset, I dropped observations for all countries that were not in the dataset in disk. This took a long time and there may have been an easier way, but I couldn't think of one, so I used the Data Editor.//
 
+//no! never drop like that! always drop on some condition like drop if _merge==1, _merge2==1 etc
 drop in 1/21
 drop in 85/145
 drop in 85/105
