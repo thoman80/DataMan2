@@ -383,6 +383,8 @@ drop respnum serviceimp
 drop excited feellonely topofworld homerelaxed homehappy homesecure toomanyimm
 
 //I'm saving this cleaned dataset so I can work on the next one I want to use. The command saves to my personal desktop, but I will use a shareable link when I merge it.//
+//i don't understand this, just save here
+
 
 //The second dataset I am using is a world dataset with democracy indicators. I found the data here: https://www.v-dem.net/en/data/data-version-9/ (I used the Country-Year: V-Dem Core). Like above, I had to start with a selected number of variables so that Google could import a shareable link. The same goes for github- I initially tried to upload the full datasets there and got an error message that the files were too large.//
 
@@ -422,10 +424,14 @@ rename v2x_corr politcorruptind
 //Now that it's cleaned up a bit, I can see some more variables that can be dropped due to missing data.//
 
 drop votebuy electintim electviolence
+
+//again and again, pls never do that:
 drop in 1/35
 drop in 1/35
 drop in 36/70
+//always drop on some condition!
 
+//anad again just save here easier for everyone
 //I'm going to switch back to the WVS data that has been cleaned.//
 
 use "https://drive.google.com/uc?id=1rWzhhvAyc4bgMpHHW6Egd_dADRx_E08W&export=download", clear
@@ -470,10 +476,10 @@ drop leisimp indlibertyind freeacexp socclasspower //I am just whittling down va
 
 //SOME GRAPHS!//
 
-graph bar (mean) subjhealth (mean) freecontrol
+graph bar (mean) subjhealth (mean) freecontrol //well need more, just 2 bars is not interesting
 graph bar (mean) feelhappy (mean) freefairelec
 
-twoway (line subjhealth year, sort cmissing(n))
+twoway (line subjhealth year, sort cmissing(n)) //this doesnt make sense
 
 drop if subjhealth<0
 drop if feelhappy<0
@@ -482,6 +488,7 @@ drop if trustmost<0
 drop if freecontrol<0
 drop if engagedsoc<0
 
+//can you interpret the following? i'm not sure what is useful about them? what do we learn?
 histogram subjhealth, bin(15) frequency fcolor(ltbluishgray) addlabel addlabopts(mlabsize(medsmall) mlabcolor(midblue) mlabangle(horizontal)) ytitle(Percentage) ylabel(, angle(horizontal)) xtitle(Subjective Health) title(Subjective Health, color(blue))
 
 histogram subjhealth, bin(15) frequency fcolor(ltbluishgray) addlabel addlabopts(mlabsize(medsmall) mlabcolor(midblue) mlabangle(horizontal)) ytitle(Frequency) ylabel(, angle(horizontal)) xtitle(Subjective Health) title(Subjective Health, color(blue))
@@ -509,6 +516,7 @@ ttest feelhappy == mediacensor, unpaired
 ttest feelhappy == civillibindex, unpaired
 
 //Now for some regressions.//
+//what is the bottomline? what have we leanred?
 
 regress feelhappy subjhealth, vce(robust)
 estimates store m1, title(Model 1)
@@ -698,7 +706,9 @@ graph bar, over(happy) ytitle(Frequency)
 
 
 
-
+//i dont see branching or nested loops
+//and in general seems like much code and output doesnt serve any purpose, we run a bunch of stuff but so what? why do we do that?
+//what did we learn?
 
 
 
