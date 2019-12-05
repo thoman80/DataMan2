@@ -588,6 +588,7 @@ correlate
 correlate feelhappy subjhealth engagedsoc genderequal regimecorrupt lifesatisfy //The results here are interesting, particularly the correlation between gender equality, regime corruption, and an engaged society. Also interesting to note is that feeling happy has a very low correlation with the rest of the variables.//
 
 correlate feelhappy subjhealth lifesatisfy  freecontrol freefairelec libdemindex //Again, there are interesting results when examining correlations between happiness measures (feeling happy, subjective health state, and life satisfaction) and measures of democracy (in this case freedom of control and choice, free fair elections, and liberal democracy index). Especially interesting is that again, happiness is not correlating strongly with democracy measures.//
+TODO
 
 correlate feelhappy subjhealth lifesatisfy respectconst execbribe freerelig //Here I am interested to note that there is a moderate positive correlation between respect for the constitution and executive bribery- I would have anticipated that the incidence of bribery would lower as respect for the constitution rises.//
 
