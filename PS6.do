@@ -1,3 +1,12 @@
+/*
+there's progress, but still some more work to be done
+python does help but
+don't put python code in dofile!!!it must be separate .py file
+reorganize stuff in dofile eg labels must come before graphs and regressions!
+do make sure it is all cofrect! any misakes would be a major problem for final project, and do ask questions if in doubt!
+need research questions and hypotheses at the beginning!!! and then need to interpret descriptive and inferential stats with those in mind and circle back and provide thorough research interpretation, not just say what the stats shows
+pls do take into account comments i made in class
+*/
 //Galadriel Thoman//
 //Problem Set 6//
 //Stata Version 16//
